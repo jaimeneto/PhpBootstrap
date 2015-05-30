@@ -31,7 +31,7 @@ class Navbar extends Component
     {
         if ($options && is_string($options)) {
             $id = $options;
-            $options = null;
+            $options = ['id' => $id];
         }
         
         $this->navbarContainer = new Tag('div', '', ['class' => 'container-fluid']);
@@ -54,33 +54,50 @@ class Navbar extends Component
         }
     }
 
+    public function fluid($bool = true)
+    {
+        if ($bool) {
+            $this->navbarCollapse->removeClass('container');
+            $this->navbarCollapse->addClass('container-fluid');
+        } else {
+            $this->navbarCollapse->removeClass('container-fluid');
+            $this->navbarCollapse->addClass('container');
+        }
+        return $this;
+    }
+    
     public function fixedTop()
     {
         $this->tag->removeClass(['navbar-fixed-bottom', 'navbar-static-top']);
-        return $this->tag->addClass('navbar-fixed-top');
+        $this->tag->addClass('navbar-fixed-top');
+        return $this;
     }
 
     public function fixedBottom()
     {
         $this->tag->removeClass(['navbar-fixed-top', 'navbar-static-top']);
-        return $this->tag->addClass('navbar-fixed-bottom');
+        $this->tag->addClass('navbar-fixed-bottom');
+        return $this;
     }
     
     public function staticTop()
     {
         $this->tag->removeClass(['navbar-fixed-top', 'navbar-fixed-bottom']);
-        return $this->tag->addClass('navbar-static-top');
+        $this->tag->addClass('navbar-static-top');
+        return $this;
     }
     
     public function inverse($bool = true)
     {
         if ($bool) {
             $this->tag->removeClass('navbar-default');
-            return $this->tag->addClass('navbar-inverse');
+            $this->tag->addClass('navbar-inverse');
+            return $this;
         }
         
         $this->tag->removeClass('navbar-inverse');
-        return $this->tag->addClass('navbar-default');
+        $this->tag->addClass('navbar-default');
+        return $this;
     }
     
     public function setHeader($brand = null, $href = null, $srOnly = 'Toggle navigation')
@@ -115,7 +132,6 @@ class Navbar extends Component
                 'class' => 'navbar-brand'
             ]));
         }
-        
         
         return $this;
     }
@@ -172,7 +188,9 @@ class Navbar extends Component
         } else {
             $this->navbarForm = new Form($elements, $options);
         }
+        
         $this->navbarForm->setDisposition('navbar');
+        return $this;
     }
     
     public function render()

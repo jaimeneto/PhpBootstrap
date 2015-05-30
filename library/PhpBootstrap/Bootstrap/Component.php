@@ -30,7 +30,11 @@ class Component
     
     public function __call($name, $arguments)
     {
-        return call_user_func_array([$this->tag, $name], $arguments);
+        $result = call_user_func_array([$this->tag, $name], $arguments);
+        if ($result instanceof Tag) {
+            return $this;
+        }
+        return $result;
     }
     
     ################################## BLOCK ##################################

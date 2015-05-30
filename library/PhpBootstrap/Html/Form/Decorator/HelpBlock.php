@@ -37,6 +37,10 @@ class HelpBlock extends FormDecorator
             $this->setContent($this->element->getHelp());
         }
         
+        if (!$this->getContent()) {
+            return $content;
+        }
+        
         switch($this->placement) {
             case self::PLACEMENT_BEFORE:
                 $html = parent::render() . $content;

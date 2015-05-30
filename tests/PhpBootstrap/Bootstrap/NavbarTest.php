@@ -27,7 +27,7 @@ class NavbarTest extends PHPUnit
     public function testRender()
     {
         $expected = '<nav class="navbar navbar-default">'
-                  . '<div class="container-fluid">'
+                  . '<div class="container">'
                   . '<div class="navbar-header">'
                   . '<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#test">'
                   . '<span class="sr-only">Toggle navigation</span>'
@@ -73,6 +73,7 @@ class NavbarTest extends PHPUnit
                 ['content' => 'Profile', 'href' => '/profile'], 
                 ['content' => 'Logout', 'href' => '/logout']
             ], null, true);
+        $this->navbar->fluid();
         $expected = '<nav class="navbar navbar-default">'
                   . '<div class="container-fluid">'
                   . '<div class="navbar-header">'
@@ -113,7 +114,7 @@ class NavbarTest extends PHPUnit
         ], true);
         
         $expected = '<nav class="navbar navbar-default">'
-                  . '<div class="container-fluid">'
+                  . '<div class="container">'
                   . '<div class="navbar-header">'
                   . '<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#test">'
                   . '<span class="sr-only">Toggle navigation</span>'
