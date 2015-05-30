@@ -49,7 +49,7 @@ class Pagination extends Component
      *
      * @var string
      */
-    protected $previewsLabel = '<span aria-hidden="true">&laquo;</span>';
+    protected $previousLabel = '<span aria-hidden="true">&laquo;</span>';
     
     /**
      *
@@ -151,9 +151,9 @@ class Pagination extends Component
      * @param string $label
      * @return \PhpBootstrap\Bootstrap\Pagination
      */
-    public function previewsLabel($label)
+    public function previousLabel($label)
     {
-        $this->previewsLabel = $label;
+        $this->previousLabel = $label;
         return $this;
     }
     
@@ -170,7 +170,7 @@ class Pagination extends Component
     
     protected function addPreviewsPage()
     {
-        if ($this->previewsLabel) {
+        if ($this->previousLabel) {
             $prevPage = $this->page - 1;
             $options = [];
             if ($this->page == 1) {
@@ -178,7 +178,7 @@ class Pagination extends Component
                 $options['class'] = 'disabled';
             }
             $href = "{$this->href}/{$this->pageArgument}/{$prevPage}";
-            $link = new Link($this->previewsLabel, $href);
+            $link = new Link($this->previousLabel, $href);
             $this->tag->addItem($link->render(), $options);
         }
         return $this;

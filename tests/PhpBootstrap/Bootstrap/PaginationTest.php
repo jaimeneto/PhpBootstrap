@@ -42,11 +42,11 @@ class PaginationTest extends PHPUnit
         $pagination = new Pagination(3);
         $pagination->href('http://www.phpbootstrap.com/')
                    ->page(3)
-                   ->previewsLabel('Previews')
+                   ->previousLabel('Previous')
                    ->nextLabel('Next');
         
         $expected = '<nav><ul class="pagination">' 
-                  . '<li><a href="http://www.phpbootstrap.com/p/2">Previews</a></li>'
+                  . '<li><a href="http://www.phpbootstrap.com/p/2">Previous</a></li>'
                   . '<li><a href="http://www.phpbootstrap.com/p/1">1</a></li>'
                   . '<li><a href="http://www.phpbootstrap.com/p/2">2</a></li>'
                   . '<li class="active"><a href="http://www.phpbootstrap.com/p/3">3</a></li>'
