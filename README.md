@@ -410,7 +410,7 @@ $element->textAlign('right');
 
 $element->textRight();
 $element->textLeft();
-$element->textCemter();
+$element->textCenter();
 $element->textJustify();
 ```
 
