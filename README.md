@@ -3,7 +3,7 @@ A bootstrap component creator for PHP
 
 ## Basic usage
 ```
-$bootstrap = new \PhpBootstrap\Bootstrap.php;`   // Instantiate the bootstrap
+$bootstrap = new \PhpBootstrap\Bootstrap.php;    // Instantiate the bootstrap
 $div = $bootstrap->div('Content text');          // Create the html element
 
 $div->addClass('example-class');                 // Add CSS Class
