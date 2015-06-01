@@ -14,11 +14,11 @@ echo $div;                                       // Print the element
 ```
 
 Results:
-
-`<div id="main_content" class="example-class" title="main title">[Content text]</div>`
+```
+<div id="main_content" class="example-class" title="main title">[Content text]</div>
+```
 
 Other methods
-
 ```
 $div->removeClass('example-class');             // Remove a CSS Class
 $div->removeAttrib('title');                    // Remove an attribute
@@ -65,7 +65,9 @@ $ol->addItem(['content' => 'item 5', 'class' => 'teste']);
 ```
 
 #### Unordered list
-`$ul = $bootstrap->ul(['item 1', 'item 2'], ['class' => 'test']);`
+```
+$ul = $bootstrap->ul(['item 1', 'item 2'], ['class' => 'test']);
+```
 
 Adding some bootstrap style:
 ```
@@ -77,30 +79,34 @@ $ul->inline();
 ```
 $dl = $bootstrap->dl(['dt1' => 'dd1', 'dt2' => 'dd2'], ['class' => 'test']);
 $dl->addItem('dt1', 'dd1', ['class' => 'dd-class']);
-$dl->addItem('dt2', 'dd2', ['dt' => ['class' => 'dt-class'], 'dd' => ['class' => 'dd-class']]);
-$dl->addItem(['content' => 'dt3', 'class' => 'dt-class'], ['content' => 'dd3', 'class' => 'dd-class']);
+$dl->addItem('dt2', 'dd2', [
+    'dt' => ['class' => 'dt-class'], 
+    'dd' => ['class' => 'dd-class']
+]);
+$dl->addItem(['content' => 'dt3', 'class' => 'dt-class'], 
+             ['content' => 'dd3', 'class' => 'dd-class']);
 ```
 
 ### Link
 `$link = $bootstrap->link('click me', 'add/link/url');`
 
 Alternative:
-
-`$link = $bootstrap->a('click me', 'add/link/url');`
+```
+$link = $bootstrap->a('click me', 'add/link/url');
+```
 
 Setting link attributes:
-
 ```
 $link->href('new/link/url');
 $link->target('_blank');
 ```
 
 ### Fieldset
-
-`$fieldset = $bootstrap->fieldset('The fieldset content', 'The fieldset legend');`
+```
+$fieldset = $bootstrap->fieldset('The fieldset content', 'The fieldset legend');
+```
 
 Alternatives:
-
 ```
 $fieldset = $bootstrap->fieldset('The fieldset content');
 $fieldset->legend('The fieldset legend');
@@ -112,7 +118,6 @@ $fieldset = $bootstrap->fieldset('The fieldset content', [
 ```
 
 ### Form
-
 ```
 $form = $bootstrap->form();
 $form->setElements([
@@ -162,10 +167,15 @@ $form->horizontal();
 $form->inline();
 ```
 
+Printing the form
+```
+echo $form;
+```
+
 Printing only the opening and close tags
 ```
 echo $form->begin();
-...
+foreach($form->getElements() as $element) echo $element;
 echo $form->end();
 ```
 
@@ -239,8 +249,9 @@ $checkbox->isChecked();
 ```
 
 Adding some bootstrap style:
-
-`$checkbox->inline(); `
+```
+$checkbox->inline(); 
+```
 
 Adding a group of checkboxes:
 ```
@@ -259,10 +270,11 @@ $radio->isChecked();
 ```
 
 Adding some bootstrap style:
+```
+$radio->inline(); 
+```
 
-`$radio->inline(); `
-
-Adding a group of checkboxes:
+Adding a group of radio buttons:
 ```
 $radioGroup = $form->create('radioGroup', 'gender', [
   'items' => ['M'  => 'Male', 'F'   => 'Female']
@@ -294,8 +306,9 @@ $reset = $form->create('button', 'reset', ['type' => 'reset', 'label' => 'Reset'
 ```
 
 Setting button attributes:
-
-`$button->type('submit');  // options: button, submit or reset`
+```
+$button->type('submit');  // options: button, submit or reset
+```
 
 Adding some bootstrap style:
 ```
@@ -306,14 +319,14 @@ $button->large();
 $button->small();
 $button->extraSmall();
 
-$button->btnClass('primary');  // Options: default', 'primary', 'success', 'info', 'warning', 'danger', 'link'
+$button->btnClass('primary');  // Options: default', 'primary', 'success', 
+                               // 'info', 'warning', 'danger', 'link'
 ```
 
-
 ##### Bootstrap's StaticText
-
-`$staticText = $bootstrap->create('StaticText', 'info', 'This is an static text');`
-
+```
+$staticText = $bootstrap->create('StaticText', 'info', 'This is an static text');
+```
 
 ##### Grouping elements
 ```
@@ -387,8 +400,9 @@ $element->bgDanger();
 ```
 
 Adding tooltip:
-
-`$element->tooltip('Tooltip text', 'left');`
+```
+$element->tooltip('Tooltip text', 'left');
+```
 
 Setting text aligment:
 ```
@@ -450,26 +464,31 @@ $alert->dismissible(false);         // Hide the "X" to hide the message
 ```
 
 ### Badge
-
-`echo $bootstrap->badge(40);`
+```
+echo $bootstrap->badge(40);
+```
 
 ### Label
 ```
 $label = $bootstrap->label('New!', 'info');
-$label->labelStyle('success');     // Options: 'default', 'primary', 'success', 'info', 'warning', 'danger'
+$label->labelStyle('success');     // Options: 'default', 'primary', 'success', 
+                                   // 'info', 'warning', 'danger'
 ```
 
 ### Jumbotron
-
-`echo $bootstrap->jumbotron('Add some nice text here');`
+```
+echo $bootstrap->jumbotron('Add some nice text here');
+```
 
 ### Caret
-
-`echo $bootstrap->caret();`
+```
+echo $bootstrap->caret();
+```
 
 ### PageHeader
-
-`echo $bootstrap->pageHeader('The title', 'extra info');`
+```
+echo $bootstrap->pageHeader('The title', 'extra info');
+```
 
 ### Well
 ```
@@ -492,13 +511,15 @@ $ponel = $bootstrap->panel('Panel body', [
     'footer'  => 'Panel footer'
 ]);
 $panel->setHeading('Panel title', 'h3');
-$panel->panelStyle('warning');   // Options: 'default', 'primary', 'success', 'info', 'warning', 'danger'
+$panel->panelStyle('warning');   // Options: 'default', 'primary', 'success', 
+                                 // 'info', 'warning', 'danger'
 ```
 
 ### ProgressBar
 ```
 $progressBar = $bootstrap->progressBar(50, '50%');
-$progressBar->progressBarStyle('success');   // Options: 'success', 'info', 'warning', 'danger'
+$progressBar->progressBarStyle('success');   // Options: 'success', 'info', 
+                                             // 'warning', 'danger'
 $progressBar->setMin(0);
 $progressBar->setMax(100);
 ```
@@ -588,12 +609,14 @@ $carousel->setNextLabel('Next');
 ```
 
 ### ListGroup
-
-`echo $bootstrap->listGroup(['item 1', 'item 2']);`
+```
+echo $bootstrap->listGroup(['item 1', 'item 2']);
+```
 
 ### Modal
 ```
-$modal = $bootstrap->modal('Modal body', ['id' => 'myModal', 'header' => 'Modal title']);
+$modal = $bootstrap->modal('Modal body', ['id'     => 'myModal', 
+                                          'header' => 'Modal title']);
 $modal->fade(false);
 $modal->header('Modal title', 'h3', 'Close');
 $modal->footer('Modal footer');
